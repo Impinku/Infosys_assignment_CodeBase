@@ -1,0 +1,421 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Validate i tunes search api with parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3489397100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Call i tunes search api",
+            "match": {
+              "location": "StepDefinition.Call_i_tunes_search_api()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2622100,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 22862600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Verify result count is \"50\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "50",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "Validate i tunes search api without parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-without-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 135737700,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Call i tunes search api without parameter",
+            "match": {
+              "location": "StepDefinition.Call_i_tunes_search_api_without_parameter()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 596300,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1023400,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "Verify result count is \"0\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "0",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 13,
+        "name": "Validate i tunes search api with term and limit parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-term-and-limit-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 138046100,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "Call i tunes search api with \"jack+johnson\" and \"25\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "jack+johnson",
+                  "offset": 30
+                },
+                {
+                  "val": "25",
+                  "offset": 49
+                }
+              ],
+              "location": "StepDefinition.call_i_tunes_search_api_with_and(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 431200,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3773700,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "Verify result count is \"25\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "25",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 18,
+        "name": "Validate i tunes search api with term and entity parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-term-and-entity-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 136607100,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "Call i tunes search api with \"jack+johnson\" and entity \"musicVideo\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "jack+johnson",
+                  "offset": 30
+                },
+                {
+                  "val": "musicVideo",
+                  "offset": 56
+                }
+              ],
+              "location": "StepDefinition.call_i_tunes_search_api_with_and_entity(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 710100,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3098900,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Verify result count is \"16\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "16",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 23,
+        "name": "Validate i tunes search api with term and canada i tunes store parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-term-and-canada-i-tunes-store-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 142075700,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "Call i tunes search api with \"jim+jones\" and country \"ca\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "jim+jones",
+                  "offset": 30
+                },
+                {
+                  "val": "ca",
+                  "offset": 54
+                }
+              ],
+              "location": "StepDefinition.call_i_tunes_search_api_with_and_country(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 396000,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3723900,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "Verify result count is \"50\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "50",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 28,
+        "name": "Validate i tunes search api with term and united states i tunes store and entity parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-term-and-united-states-i-tunes-store-and-entity-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 201650700,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "Call i tunes search api with \"yelp\" and country \"us\" and entity \"software\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "yelp",
+                  "offset": 30
+                },
+                {
+                  "val": "us",
+                  "offset": 49
+                },
+                {
+                  "val": "software",
+                  "offset": 65
+                }
+              ],
+              "location": "StepDefinition.call_i_tunes_search_api_with_and_country_and_entity(String,String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 586900,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 39962300,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "Verify result count is \"50\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "50",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 33,
+        "name": "Validate i tunes search api with invalid parameter",
+        "description": "",
+        "id": "itunes-search-api;validate-i-tunes-search-api-with-invalid-parameter",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 154741300,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "Call i tunes search api with invalid param",
+            "match": {
+              "location": "StepDefinition.Call_i_tunes_search_api_with_invalid_param()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 286000,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "Verify status code is 200",
+            "match": {
+              "location": "StepDefinition.Verify_status_code_is_200()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 682500,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "Verify result count is \"0\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "0",
+                  "offset": 24
+                }
+              ],
+              "location": "StepDefinition.Verify_result_count_is(int)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "iTunes search API",
+    "description": "",
+    "id": "itunes-search-api",
+    "keyword": "Feature",
+    "uri": "src/test/java/iTunesSearchAPI.feature",
+    "tags": []
+  }
+]
