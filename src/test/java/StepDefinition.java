@@ -9,6 +9,10 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class StepDefinition {
 public static String baseURL="https://itunes.apple.com";
@@ -18,6 +22,51 @@ public static String baseURL="https://itunes.apple.com";
     {
         connectRestAssured();
        System.out.println("Calling i tunes search");
+    }
+
+    @Given("^Call i tunes search api with encoded url with parameter \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void Call_i_tunes_search_api_with_encoded_url(String key, String value) throws Throwable
+    {
+        RestAssured.baseURI = baseURL;
+        String encodedparam= URLEncoder.encode(value);
+        RequestSpecification request = RestAssured.given();
+        request.param(key,encodedparam);
+        response = request.get("/search");
+        System.out.println("Encoded url is -->"+encodedparam+"<--");
+        System.out.println(response.getStatusCode());
+        System.out.println("Response Body..............."+response.getBody().asString()+".............");
+    }
+
+    @Given("^Call i tunes search api with encoded url with parameters \"([^\"]*)\" as \"([^\"]*)\" and \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void Call_i_tunes_search_api_with_encoded_url_with_multiple_parameter(String key, String value,String key2, String value2) throws Throwable
+    {
+        RestAssured.baseURI = baseURL;
+        String encodedparam= URLEncoder.encode(value);
+        String encodedparam2= URLEncoder.encode(value2);
+        RequestSpecification request = RestAssured.given();
+        request.param(key,encodedparam);
+        request.param(key2,encodedparam2);
+        response = request.get("/search");
+        System.out.println("Encoded url is -->"+encodedparam+"<--");
+        System.out.println(response.getStatusCode());
+        System.out.println("Response Body..............."+response.getBody().asString()+".............");
+    }
+
+    @Given("^Call i tunes search api with encoded url with parameters \"([^\"]*)\" as \"([^\"]*)\" and \"([^\"]*)\" as \"([^\"]*)\" and \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void Call_i_tunes_search_api_with_encoded_url_with_three_parameter(String key, String value,String key2, String value2,String key3, String value3) throws Throwable
+    {
+        RestAssured.baseURI = baseURL;
+        String encodedparam= URLEncoder.encode(value);
+        String encodedparam2= URLEncoder.encode(value2);
+        String encodedparam3= URLEncoder.encode(value3);
+        RequestSpecification request = RestAssured.given();
+        request.param(key,encodedparam);
+        request.param(key2,encodedparam2);
+        request.param(key3,encodedparam3);
+        response = request.get("/search");
+        System.out.println("Encoded url is -->"+encodedparam+"<--");
+        System.out.println(response.getStatusCode());
+        System.out.println("Response Body..............."+response.getBody().asString()+".............");
     }
 
     @Given("^Call i tunes search api with invalid param$")
@@ -83,20 +132,57 @@ public static String baseURL="https://itunes.apple.com";
         System.out.println("Calling i tunes search with term, country and entity");
     }
 
-    @Given("^Verify status code is 200$")
-    public void Verify_status_code_is_200() throws Throwable
+    @Given("^Verify status code is \"([^\"]*)\"$")
+    public void Verify_status_code_is_200(int code) throws Throwable
     {
-        Assert.assertEquals(response.getStatusCode(),200);
+        Assert.assertEquals(code,response.getStatusCode());
         System.out.println("Status code verified successfully");
     }
 
-    @Given("^Verify result count is \"([^\"]*)\"$")
+    @Then("^Verify result count is \"([^\"]*)\"$")
     public void Verify_result_count_is(int resultCount) throws Throwable
     {
         JSONObject obj=new JSONObject(response.getBody().asString());
         Assert.assertEquals(obj.getInt("resultCount"),resultCount);
         System.out.println("Result count verified successfully");
     }
+
+    @Then("^Verify WrapperType is \"([^\"]*)\"$")
+    public void Verify_WrapperType(String type) throws Throwable
+    {
+        JSONObject obj=new JSONObject(response.getBody().asString());
+        System.out.println(">>>>>>>>"+obj.getJSONArray("results").getJSONObject(0).getString("wrapperType"));
+        Assert.assertEquals(obj.getJSONArray("results").getJSONObject(0).getString("wrapperType"),type);
+        System.out.println("WrapperType verified successfully");
+    }
+
+    @Then("^Verify collectionExplicitness is \"([^\"]*)\"$")
+    public void Verify_collectionExplicitness(String type) throws Throwable
+    {
+        JSONObject obj=new JSONObject(response.getBody().asString());
+        String explicitiStat=obj.getJSONArray("results").getJSONObject(0).getString("collectionExplicitness");
+        System.out.println(">>>>>>>>"+explicitiStat);
+        String status;
+        if(explicitiStat.equals("Explicit")){
+            status="Yes";
+        }else{
+            status="No";
+        }
+
+        Assert.assertEquals(status,type);
+        System.out.println("Explicitness verified successfully");
+    }
+
+    @Then("^Verify artistName is \"([^\"]*)\"$")
+    public void Verify_ArtistName(String type) throws Throwable
+    {
+        JSONObject obj=new JSONObject(response.getBody().asString());
+        System.out.println(">>>>>>>>"+obj.getJSONArray("results").getJSONObject(0).getString("artistType"));
+        Assert.assertEquals(obj.getJSONArray("results").getJSONObject(0).getString("artistType"),type);
+        System.out.println("Artist name verified successfully");
+    }
+
+
     @Given("^Call i tunes search api without parameter$")
     public void Call_i_tunes_search_api_without_parameter() throws Throwable
     {
@@ -114,6 +200,7 @@ public static String baseURL="https://itunes.apple.com";
         request.param("term","jack+johnson");
         response = request.get("/search");
         System.out.println(response.getBody().asString());
+        System.out.println(response.getStatusCode());
 
     }
 
