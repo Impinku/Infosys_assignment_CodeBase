@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -145,6 +146,22 @@ public static String baseURL="https://itunes.apple.com";
         JSONObject obj=new JSONObject(response.getBody().asString());
         Assert.assertEquals(obj.getInt("resultCount"),resultCount);
         System.out.println("Result count verified successfully");
+    }
+
+    @Then("^Verify version number is \"([^\"]*)\"$")
+    public void Verify_version_number_is(int resultCount) throws Throwable
+    {
+        JSONObject obj=new JSONObject(response.getBody().asString());
+        String collectioncensor=obj.getJSONArray("results").getJSONObject(2).getString("collectionCensoredName");
+        System.out.println(">>>>>>>>"+collectioncensor);
+        if(collectioncensor.contains(String.valueOf(resultCount))){
+         Assert.assertTrue(true);
+         System.out.println("versions verified successfully");
+        }else {
+            Assert.assertTrue(false);
+            System.out.println("versions couldn't verified");
+        }
+
     }
 
     @Then("^Verify WrapperType is \"([^\"]*)\"$")

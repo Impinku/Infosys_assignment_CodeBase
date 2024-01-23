@@ -74,3 +74,10 @@ Feature: iTunes search API
     Given Call i tunes search api with invalid param
     Then Verify status code is "400"
     Then Verify result count is "0"
+
+  @TC=12
+  Scenario: Validate The search result key version you want to receive back from your search. The default is 2
+    Given Call i tunes search api with encoded url with parameters "term" as "jack johnson" and "media" as "all"
+    Then Verify status code is "200"
+    Then Verify result count is "50"
+    Then Verify version number is "2"
